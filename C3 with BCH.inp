@@ -1,0 +1,30 @@
+
+
+  DATA: FILE IS LOVING2.dat;
+
+  VARIABLE:
+  NAMES ARE Participant MIIc MIId
+SRE RSES PRA CTS SBS MD
+MP CRI BLM_total Uni_CoBRAS_bri
+Uni_CoBRAS_rp CollEf_total
+WhiteMulti ProxWhite FormRace
+Typology RaceComp_Elem RaceComp_Middle
+RaceComp_High RaceComp_ChldNeigh
+BPDS_Perp;
+
+  MISSING ARE ALL (-999); 
+  
+  USEVARIABLES ARE MIId MIIc SRE CTS MP CRI;
+
+  CLASSES = C (3); 
+
+  Auxiliary = RSES(BCH) BLM_total(BCH)
+  PRA(BCH) MD(BCH) Uni_CoBRAS_bri(BCH)
+Uni_CoBRAS_rp(BCH) CollEf_total(BCH)
+  SBS(BCH);
+
+ ANALYSIS:
+  TYPE=MIXTURE; 
+  
+  OUTPUT:
+  sampstat MOD(3.84) stand tech11 tech14;

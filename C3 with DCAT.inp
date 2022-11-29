@@ -1,0 +1,31 @@
+ DATA: FILE IS Catvar.dat;
+
+  VARIABLE:
+  NAMES ARE Participant MIIc MIId
+SRE RSES PRA CTS SBS MD MP
+CRI BLM_total WhiteMulti ProxWhite
+FormRace Typology RaceComp_Elem
+RaceComp_Middle RaceComp_High
+RaceComp_ChldNeigh BPDS_Perp; 
+
+  IDVARIABLE = Participant; 
+
+  MISSING ARE ALL (-999); 
+  
+  USEVARIABLES ARE MIId MIIc SRE CTS MP CRI;
+
+  AUXILIARY = ProxWhite (DCAT) Typology (DCAT) 
+    RaceComp_ChldNeigh (DCAT) BPDS_Perp (DCAT);
+  
+  CLASSES = C (3); 
+
+ ANALYSIS:
+  TYPE=MIXTURE; 
+  ESTIMATOR = MLR; 
+
+  OUTPUT:
+  sampstat MOD(3.84) stand tech11 tech14;
+
+   SAVEDATA:
+   File is LOVING.dat;
+   Save = cprobabilities;
